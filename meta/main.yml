@@ -1,0 +1,22 @@
+galaxy_info:
+  author: Alex V Kotelnikov
+  description: Role for configuring ssh server
+
+  license: license (Apache)
+
+  min_ansible_version: 2.4
+
+  platforms:
+    - name: Ubuntu
+      versions:
+        - 18.04
+    - name: Debian
+      versions:
+        - 8.0
+        - 9.0  
+
+  galaxy_tags:
+    - ssh
+    - ssh server
+    - openssh
+    - openssh server

@@ -1,0 +1,18 @@
+---
+- name: Prepare sshd config file
+  template:
+    src: "templates/etc/ssh/sshd_config.j2"
+    dest: /etc/ssh/sshd_config
+    owner: bin
+    group: root
+    mode: "u=rw,g=r,o=r"
+    validate: "/usr/sbin/sshd -T -f %s"
+  register: sshd_config_file
+
+- name: Reload SSH service config
+  service:
+    name: ssh
+    state: reloaded
+  when: sshd_config_file is changed
+  # notify:
+  #   - os:ssh:restarted

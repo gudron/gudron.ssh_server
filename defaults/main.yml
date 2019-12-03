@@ -1,0 +1,5 @@
+---
+ssh_port: 1122
+ssh_permit_root_login: "no"
+ssh_permit_empty_password: "no"
+ssh_permit_password_authentication: "no"
