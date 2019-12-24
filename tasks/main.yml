@@ -1,4 +1,7 @@
 ---
+- name: Include OS-specific variables.
+  include_vars: "{{ os_distribution }}.yml"
+
 - name: Prepare sshd config file
   template:
     src: "templates/etc/ssh/sshd_config.j2"
@@ -11,7 +14,7 @@
 
 - name: Reload SSH service config
   service:
-    name: ssh
+    name: "{{ service_name }}"
     state: reloaded
   when: sshd_config_file is changed
   # notify:

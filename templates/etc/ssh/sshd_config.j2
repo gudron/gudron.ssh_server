@@ -33,13 +33,17 @@ PasswordAuthentication {{ ssh_permit_password_authentication }}
 X11Forwarding yes
 X11DisplayOffset 10
 PrintMotd no
+{% if os_distribution != 'Alpine' %}
 PrintLastLog yes
+{% endif %}
 TCPKeepAlive yes
 
 AcceptEnv LANG LC_*
 
 Subsystem sftp /usr/lib/openssh/sftp-server
 
+{% if os_distribution != 'Alpine' %}
 UsePAM yes
+{% endif %}
 
 UseDNS no
